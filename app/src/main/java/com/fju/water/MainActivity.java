@@ -72,13 +72,14 @@ public class MainActivity extends AppCompatActivity {
             } else if (degree >= 51) {
                 fee = degree * 12.075f - 110.25f;
             }
-//            Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-//            startActivity(intent);
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("每月抄表費用")
-                    .setMessage("費用: " + fee)
-                    .setPositiveButton("OK", listener)
-                    .show();
+            Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+            intent.putExtra("FEE", fee);
+            startActivity(intent);
+//            new AlertDialog.Builder(MainActivity.this)
+//                    .setTitle("每月抄表費用")
+//                    .setMessage("費用: " + fee + " 元")
+//                    .setPositiveButton("OK", listener)
+//                    .show();
         } else {
             String nextString = edNext.getText().toString();
             if (!TextUtils.isEmpty(nextString)) {
@@ -91,9 +92,10 @@ public class MainActivity extends AppCompatActivity {
                     fee = degree * 11.55f - 168;
                 } else if (degree > 101) {
                     fee = degree * 12.075f - 220.5f;
-                } new AlertDialog.Builder(MainActivity.this)
+                }
+                new AlertDialog.Builder(MainActivity.this)
                         .setTitle("隔月抄表費用")
-                        .setMessage("費用: " + fee)
+                        .setMessage("費用: " + fee + " 元")
                         .setPositiveButton("OK", listener)
                         .show();
             } else {
@@ -106,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void reset() {
+        fee = 0;
         edMonth.setText("");
         edNext.setText("");
     }
