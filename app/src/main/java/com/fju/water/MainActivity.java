@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 fee = degree * 12.075f - 110.25f;
             }
             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-            intent.putExtra("FEE", fee);
+            intent.putExtra(getString(R.string.extra_fee), fee);
             startActivity(intent);
 //            new AlertDialog.Builder(MainActivity.this)
 //                    .setTitle("每月抄表費用")
@@ -96,13 +96,13 @@ public class MainActivity extends AppCompatActivity {
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("隔月抄表費用")
                         .setMessage("費用: " + fee + " 元")
-                        .setPositiveButton("OK", listener)
+                        .setPositiveButton(getString(R.string.ok), listener)
                         .show();
             } else {
                 new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("錯誤")
-                        .setMessage("請輸入資料, 謝謝!")
-                        .setPositiveButton("OK", null)
+                        .setTitle(getString(R.string.error))
+                        .setMessage(getString(R.string.no_input))
+                        .setPositiveButton(getString(R.string.ok), null)
                         .show();
             }
         }

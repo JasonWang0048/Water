@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">查水表</string>
+    <string name="action_settings">設定</string>
+    <string name="calculate">計算</string>
+    <string name="error">錯誤</string>
+    <string name="every_other_month">隔月抄表</string>
+    <string name="monthly">每月抄表</string>
+    <string name="ok">確定</string>
+    <string name="water_fee">水費:</string>
+    <string name="no_input">請輸入資料, 謝謝!</string>
+    <string name="dollars">" 元"</string>
+</resources>
