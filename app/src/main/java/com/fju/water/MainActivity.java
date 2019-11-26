@@ -7,7 +7,6 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -16,7 +15,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     private float degree;
     private float fee = 0;
     private Button butt;
+    private TextView text;
+    private Switch sw;
+    private boolean isNext;
+    private EditText edInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +38,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        edMonth = findViewById(R.id.month);
-        edNext = findViewById(R.id.next);
+        text = findViewById(R.id.type);
+//        edInput = findViewById(R.id.input);
+        edMonth = findViewById(R.id.input);
+//        edNext = findViewById(R.id.next);
         butt = findViewById(R.id.button);
         butt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fee();
+            }
+        });
+        sw = findViewById(R.id.sw);
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isNext = isChecked;
+                text.setText(isNext ? getString(R.string.every_other_month) : getString(R.string.monthly));
             }
         });
 
@@ -80,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
 //                    .setMessage("費用: " + fee + " 元")
 //                    .setPositiveButton("OK", listener)
 //                    .show();
-        } else {
+        }
+/*        else {
             String nextString = edNext.getText().toString();
             if (!TextUtils.isEmpty(nextString)) {
                 degree = Float.parseFloat(nextString);
@@ -106,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
         }
+*/
     }
     public void reset() {
         fee = 0;
